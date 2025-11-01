@@ -188,9 +188,8 @@ st.markdown("---")
 
 # Compute KPIs
 st.markdown(
-    "
-    <h2 style='text-align: center;'>Sales Performance Metrics</h2>
-    ")
+    "<h2 style='text-align: center;'>Sales Performance Metrics</h2>",
+    unsafe_allow_html=True)
 total_revenue = df["after_discount"].sum() if "after_discount" in df.columns else 0
 total_orders = df["order_id"].nunique() if "order_id" in df.columns else len(df)
 total_customers = df["customer_id"].nunique() if "customer_id" in df.columns else df["customer_id"].nunique() if "customer_id" in df.columns else None
@@ -218,9 +217,8 @@ st.markdown("---")
 
 # Table (top area) and left charts
 st.markdown(
-    "
-    <h2 style='text-align: center;'>Transaction and Profit Analysis Report</h2>
-    ")
+    "<h2 style='text-align: center;'>Transaction and Profit Analysis Report</h2>",
+    unsafe_allow_html=True)
 
 # Tentukan kolom yang ingin ditampilkan
 display_cols = []
