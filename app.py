@@ -268,7 +268,9 @@ with c2:
         st.info("Insufficient data to show top products (need product_name & after_discount).")
 
 st.markdown("---")
-st.subheader("Korelasi Antar Variabel Numerik")
+st.markdown(
+    "<h2 style='text-align: center;'>Korelasi Antar Variabel Numerik</h2>",
+    unsafe_allow_html=True)
 numeric = df.select_dtypes(include=[np.number])
 if not numeric.empty:
     corr = numeric.corr()
