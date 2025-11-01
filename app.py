@@ -188,7 +188,7 @@ st.markdown("---")
 
 # Compute KPIs
 st.markdown(
-    "<h2 style='text-align: center;'>Sales Performance Metrics</h2>",
+    "<h3 style='text-align: center;'>Sales Performance Metrics</h3>",
     unsafe_allow_html=True)
 total_revenue = df["after_discount"].sum() if "after_discount" in df.columns else 0
 total_orders = df["order_id"].nunique() if "order_id" in df.columns else len(df)
@@ -217,7 +217,7 @@ st.markdown("---")
 
 # Table (top area) and left charts
 st.markdown(
-    "<h2 style='text-align: center;'>Transaction and Profit Analysis Report</h2>",
+    "<h3 style='text-align: center;'>Transaction and Profit Analysis Report</h3>",
     unsafe_allow_html=True)
 
 # Tentukan kolom yang ingin ditampilkan
@@ -269,7 +269,7 @@ with c2:
 
 st.markdown("---")
 st.markdown(
-    "<h2 style='text-align: center;'>Korelasi Antar Variabel Numerik</h2>",
+    "<h3 style='text-align: center;'>Korelasi Antar Variabel Numerik</h3>",
     unsafe_allow_html=True)
 numeric = df.select_dtypes(include=[np.number])
 if not numeric.empty:
