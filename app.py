@@ -203,6 +203,7 @@ aov = total_revenue / total_orders if total_orders and total_orders > 0 else 0
 
 # KPI cards row 1
 k1, k2, k3, k4, k5, k6 = st.columns([1.3,1,1,1,1,1])
+st.subheader("Sales Performance Metrics")
 k1.markdown(f"<div class='kpi-card'><small class='subtle'>Before Discount</small><h3>{format_currency(df['before_discount'].sum() if 'before_discount' in df.columns else total_revenue)}</h3></div>", unsafe_allow_html=True)
 k2.markdown(f"<div class='kpi-card'><small class='subtle'>After Discount</small><h3>{format_currency(total_revenue)}</h3></div>", unsafe_allow_html=True)
 k3.markdown(f"<div class='kpi-card'><small class='subtle'>Net Profit</small><h3>{format_currency(total_profit) if not np.isnan(total_profit) else 'N/A'}</h3></div>", unsafe_allow_html=True)
