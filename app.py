@@ -187,7 +187,10 @@ st.markdown('<div class="subtle">Product Sales and Customer Insight</div>', unsa
 st.markdown("---")
 
 # Compute KPIs
-st.subheader("Sales Performance Metrics")
+st.markdown(
+    "
+    <h2 style='text-align: center;'>Sales Performance Metrics</h2>
+    ")
 total_revenue = df["after_discount"].sum() if "after_discount" in df.columns else 0
 total_orders = df["order_id"].nunique() if "order_id" in df.columns else len(df)
 total_customers = df["customer_id"].nunique() if "customer_id" in df.columns else df["customer_id"].nunique() if "customer_id" in df.columns else None
@@ -214,7 +217,10 @@ k6.markdown(f"<div class='kpi-card'><small class='subtle'>Average Order Value</s
 st.markdown("---")
 
 # Table (top area) and left charts
-st.subheader("Transaction and Profit Analysis Report")
+st.markdown(
+    "
+    <h2 style='text-align: center;'>Transaction and Profit Analysis Report</h2>
+    ")
 
 # Tentukan kolom yang ingin ditampilkan
 display_cols = []
