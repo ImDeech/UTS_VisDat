@@ -12,7 +12,7 @@ import plotly.express as px
 import plotly.graph_objects as go
 from io import BytesIO
 
-st.set_page_config(page_title="Dashboard Visualisasi UTS", layout="wide", page_icon="📊")
+st.set_page_config(page_title="Financial Performance & Revenue Analytics Dashboard", layout="wide", page_icon="📊")
 
 # Helper utilities
 def first_col(df, candidates):
