@@ -187,6 +187,9 @@ st.markdown('<div class="subtle">Product Sales and Customer Insight</div>', unsa
 st.markdown("---")
 
 # Compute KPIs
+st.markdown(
+    "<h3 style='text-align: center;'>Sales Performance Metrics</h3>",
+    unsafe_allow_html=True)
 total_revenue = df["after_discount"].sum() if "after_discount" in df.columns else 0
 total_orders = df["order_id"].nunique() if "order_id" in df.columns else len(df)
 total_customers = df["customer_id"].nunique() if "customer_id" in df.columns else df["customer_id"].nunique() if "customer_id" in df.columns else None
@@ -213,32 +216,25 @@ k6.markdown(f"<div class='kpi-card'><small class='subtle'>Average Order Value</s
 st.markdown("---")
 
 # Table (top area) and left charts
-left_col, right_col = st.columns([1,1.4])
+st.markdown(
+    "<h3 style='text-align: center;'>Transaction and Profit Analysis Report</h3>",
+    unsafe_allow_html=True)
 
-with left_col:
-    st.subheader("Transaction and Profit Analysis Report")
-    # Show top N rows in a table; enable download
-    display_cols = []
-    for c in ["product_name","category","before_discount","after_discount","net_profit","quantity","customer_id","order_id"]:
-        if c in df.columns:
-            display_cols.append(c)
-    if not display_cols:
-        # fallback: show first 10 columns
-        display_cols = df.columns.tolist()[:10]
-    st.dataframe(df[display_cols].head(100), height=300)
+# Tentukan kolom yang ingin ditampilkan
+display_cols = []
+for c in ["product_name", "category", "before_discount", "after_discount", "net_profit", "quantity", "customer_id", "order_id"]:
+    if c in df.columns:
+        display_cols.append(c)
 
-with right_col:
-    st.subheader("Sales Performance Metrics")
-    # Key KPI display large (repeated style)
-    r1, r2 = st.columns(2)
-    r1.metric("Before Discount", format_currency(df['before_discount'].sum() if 'before_discount' in df.columns else total_revenue))
-    r2.metric("After Discount", format_currency(total_revenue))
-    r1b, r2b = st.columns(2)
-    r1b.metric("Net Profit", format_currency(total_profit) if not np.isnan(total_profit) else "N/A")
-    r2b.metric("Quantity", f"{int(df['quantity'].sum()) if 'quantity' in df.columns else df.shape[0]:,}")
-    r1c, r2c = st.columns(2)
-    r1c.metric("Customer", f"{int(total_customers):,}" if total_customers is not None else "N/A")
-    r2c.metric("Average Order Value", format_currency(aov))
+if not display_cols:
+    display_cols = df.columns.tolist()[:10]
+
+# Tampilkan tabel secara penuh (melebar)
+st.dataframe(
+    df[display_cols].head(100),
+    use_container_width=True,  # ini yang bikin tabel melebar penuh
+    height=400
+)
 
 st.markdown("---")
 
@@ -272,7 +268,9 @@ with c2:
         st.info("Insufficient data to show top products (need product_name & after_discount).")
 
 st.markdown("---")
-st.subheader("Korelasi Antar Variabel Numerik")
+st.markdown(
+    "<h3 style='text-align: center;'>Korelasi Antar Variabel Numerik</h3>",
+    unsafe_allow_html=True)
 numeric = df.select_dtypes(include=[np.number])
 if not numeric.empty:
     corr = numeric.corr()
